@@ -1,10 +1,18 @@
-# Ignorar saídas de compilação
-TCC/output/
+# Projetos pessoais (exemplos locais)
+TCC/
+
+# PDFs grandes
+*.pdf
+
+# Arquivos do Word
 *.docx
 
-# Manter o template se desejado (comente a linha abaixo para ignorar)
-!template-abnt.docx
-
-# Ignorar arquivos temporários
+# Sistema operacional
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+*.swp
+*~
