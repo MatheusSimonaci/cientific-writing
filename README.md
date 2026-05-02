@@ -1,25 +1,23 @@
-# Escrita Científica com IA
+# Sistema de Escrita Acadêmica IA (ABNT)
 
-Repositório de configuração e contexto para uso de IA como assistente de escrita acadêmica. Contém guias de estilo, normas ABNT e estrutura de projetos (TCC, artigos, monografias).
+Este repositório contém um framework estratégico para a produção de textos acadêmicos (TCC, Artigos, Monografias) utilizando agentes de Inteligência Artificial.
 
-## Estrutura
+## 🚀 Como Funciona
 
-```
-cientific-writing/
-├── language-style.md   # Normas ABNT e essência autoral (estilo de escrita)
-├── onboarding.md       # Guia de inicialização de novos projetos com IA
-└── TCC/                # Pasta do projeto TCC
-    └── references/     # PDFs e fontes de referência do TCC
-```
+O sistema utiliza uma abordagem modular e orientada a "Essência Autoral" para garantir que a IA não apenas escreva, mas preserve a lógica e o rigor do autor.
 
-## Como Usar
+### Estrutura do Projeto
+- **`language-style.md`**: Diretrizes de estilo, normas ABNT e a essência intelectual do autor.
+- **`onboarding.md`**: Manual de governança para a IA. Cole o conteúdo deste arquivo no início de qualquer chat com Gemini, Claude ou ChatGPT.
+- **`TCC/`**: Pasta do projeto com arquivos modulares (`00-capa.md` a `06-revisao.md`).
+- **`TCC/references/`**: Coloque aqui seus PDFs e fontes de pesquisa.
+- **`compile-docx.ps1`**: Script PowerShell para converter o projeto Markdown em um arquivo Word (.docx) formatado.
 
-1. **Inicie uma sessão com a IA** usando o prompt definido em `onboarding.md`.
-2. **A IA lerá** o arquivo `language-style.md` para seguir as normas ABNT e o estilo autoral definidos.
-3. **Para cada projeto**, crie uma pasta (ex: `TCC/`) com uma subpasta `references/` contendo os PDFs e fontes.
+## 🛠️ Requisitos para Exportação
+Para gerar o arquivo `.docx` final:
+1. Instale o **Pandoc** (https://pandoc.org).
+2. Tenha um arquivo chamado `template-abnt.docx` na raiz (estilos de referência).
+3. Execute no terminal: `./compile-docx.ps1 -ProjectDir TCC`
 
-## Projetos
-
-| Projeto | Status |
-|---------|--------|
-| TCC     | Em andamento |
+## 🧠 Governança de IA
+Ao iniciar um novo projeto, o agente de IA é instruído a ser proativo, realizando um diagnóstico completo do tema e objetivos antes de iniciar a redação, garantindo que o texto siga a lógica de **Causa e Consequência**.

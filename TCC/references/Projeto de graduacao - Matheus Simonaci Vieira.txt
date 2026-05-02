@@ -1,0 +1,403 @@
+﻿UNIVERSIDADE FEDERAL FLUMINENSE
+ESCOLA DE ENGENHARIA
+GRADUAÇÃO EM ENGENHARIA MECÂNICA 
+
+
+
+
+
+
+MATHEUS SIMONACI VIEIRA
+
+
+
+
+
+
+
+
+APLICAÇÃO DE ALGORITMOS DE INTELIGÊNCIA
+ARTIFICIAL PARA DETERMINAÇÃO DE CORRELAÇÕES
+EMPÍRICAS EM UMA RODA DESSECANTE
+
+
+
+
+
+
+
+
+
+
+
+
+NITERÓI, RJ
+2025
+________________
+
+
+Matheus Simonaci Vieira
+
+
+
+
+
+
+
+
+APLICAÇÃO DE ALGORITMOS DE INTELIGÊNCIA ARTIFICIAL PARA DETERMINAÇÃO DE CORRELAÇÕES EMPÍRICAS EM UMA RODA DESSECANTE
+
+
+
+
+
+
+
+
+Trabalho de Conclusão de Curso apresentado ao Curso de Engenharia Mecânica da Universidade Federal Fluminense, como requisito parcial para obtenção do grau de Engenheiro Mecânico.
+
+
+
+
+
+
+Orientador:
+Prof. César Cunha Pacheco
+
+
+
+
+Niterói, RJ
+2025.
+________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ficha Catalográfica elaborada pela Biblioteca da Escola de Engenharia e Instituto de Computação da UFF
+Após finalizar o trabalho, gerar a ficha catalográfica a partir do link a seguir:
+http://www.bibliotecas.uff.br/bee/ficha-catalografica 
+Necessita-se da definição de termos de busca como assunto, conforme instruções apresentadas no link previamente descrito.
+Para inserir a ficha catalográfica neste trecho do documento, recomenda-se a utilização de caixa de texto (aba “Inserir” → “Caixa de texto”), pois assim pode-se ajustar a posição mais facilmente.
+________________
+
+
+Matheus Simonaci Vieira
+APLICAÇÃO DE ALGORITMOS DE INTELIGÊNCIA ARTIFICIAL PARA DETERMINAÇÃO DE CORRELAÇÕES EMPÍRICAS EM UMA RODA DESSECANTE
+
+
+Trabalho de Conclusão de Curso apresentado ao Curso de Engenharia Mecânica da Universidade Federal Fluminense, como requisito parcial para obtenção do grau de Engenheiro Mecânico.
+
+
+Grau:
+Aprovado em ../../….
+Banca examinadora
+
+
+___________________________________________
+Prof. DSc. César Cunha Pacheco – UFF
+Orientador
+
+
+___________________________________________
+Profa. PhD Nome – UFF
+
+
+___________________________________________
+MSc. Eng. Nome – UFRJ
+
+
+___________________________________________
+Eng. Nome
+Niterói, RJ, 2025.
+
+
+
+
+
+
+
+
+
+
+
+
+________________
+
+
+Agradecimentos
+Agradeço primeiramente a Deus, por ter sustentado cada passo desta caminhada e por me conceder sabedoria e discernimento nos momentos em que o caminho parecia incerto. A fé foi o que me manteve firme nas horas mais desafiadoras, lembrando-me de que o propósito é maior que a dificuldade. Agradeço também à minha igreja, que foi um alicerce espiritual e emocional durante todo esse percurso. O convívio, os conselhos e o apoio constante me ajudaram a manter a mente e o coração alinhados, mesmo diante das pressões e responsabilidades da vida acadêmica.
+Aos meus pais, minha mais sincera gratidão. Além do amor e do incentivo incondicional, agradeço por apoiarem meus projetos e acreditarem nas minhas ideias, mesmo quando pareciam ousadas ou distantes. Foram eles que me ensinaram, pelo exemplo, o valor do esforço, da paciência e da integridade. O apoio que recebi não foi apenas material, mas principalmente emocional e moral — foi o combustível que me impulsionou a seguir acreditando no que eu poderia construir, dentro e fora da universidade.
+Estendo também meus agradecimentos ao meu orientador, professor César Pacheco, pela paciência, dedicação e orientação, que contribuíram de forma essencial para a realização deste trabalho e ao Maurício Maciel que me instruiu a respeito do funcionamento de uma roda dessecante. Agradeço igualmente a todos os professores da Universidade Federal Fluminense, que, com seu conhecimento e compromisso, foram fundamentais na minha formação. Concluir o curso de Engenharia Mecânica na UFF, iniciado em 2021, foi uma jornada desafiadora, por vezes frustrante, mas, sobretudo, engrandecedora. Cada obstáculo enfrentado me proporcionou não apenas crescimento técnico, mas também amadurecimento pessoal e de caráter. Hoje, reconheço que essa trajetória moldou minha forma de pensar, resolver problemas e enxergar o mundo com mais responsabilidade e propósito.
+Muito obrigado!
+
+
+
+
+________________
+
+
+
+
+________________
+
+
+Epígrafe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+“Em tudo, façam aos outros o que vocês querem que eles lhes façam”
+Jesus Cristo
+
+
+
+
+
+
+
+
+________________
+
+
+
+
+Resumo
+O trabalho discorre sobre a aplicação de algoritmos de aprendizado de máquina para a determinação de correlações empíricas em sistemas que envolvem transferência simultânea de calor e massa. O desenvolvimento de correlações dessa natureza, embora essencial para a engenharia térmica, costuma demandar grande esforço experimental, tempo e simplificações teóricas que podem comprometer a precisão dos modelos. Nesse contexto, técnicas modernas de inteligência artificial surgem como alternativa para automatizar a formulação dessas relações, utilizando dados numéricos de forma a gerar expressões analíticas consistentes e fisicamente interpretáveis.
+A proposta do trabalho consiste em empregar um sistema de aprendizado de máquina baseado em regressão simbólica, capaz de identificar relações matemáticas a partir de uma base de dados previamente obtida. A metodologia tem como objetivo avaliar a eficácia do algoritmo em representar o comportamento físico do sistema estudado, servindo como prova de conceito para o uso de modelos computacionais no campo da transferência de calor e massa.
+A partir dos resultados obtidos, espera-se demonstrar o potencial do aprendizado de máquina como ferramenta complementar aos métodos analíticos tradicionais, oferecendo uma abordagem mais flexível, eficiente e precisa para o desenvolvimento de correlações empíricas em aplicações de engenharia.
+
+
+Palavras-chave: Regressão simbólica, Inteligência artificial, Roda dessecante, Transferência de calor e massa.
+
+
+________________
+
+
+
+
+Abstract
+This work discusses the application of machine learning algorithms for determining empirical correlations in systems involving simultaneous heat and mass transfer. The development of such correlations, while essential for thermal engineering, typically demands significant experimental effort, time, and theoretical simplifications that can compromise model accuracy. In this context, modern artificial intelligence techniques emerge as an alternative to automate the formulation of these relationships, using numerical data to generate consistent and physically interpretable analytical expressions.
+The work's proposal is to employ a machine learning system based on symbolic regression, capable of identifying mathematical relationships from a previously obtained dataset. The methodology aims to evaluate the algorithm's effectiveness in representing the physical behavior of the system under study, serving as a proof of concept for the use of computational models in the field of heat and mass transfer.
+Based on the obtained results, it is expected to demonstrate the potential of machine learning as a complementary tool to traditional analytical methods, offering a more flexible, efficient, and precise approach for developing empirical correlations in engineering applications.
+
+
+Keywords: Symbolic regression, Artificial intelligence, Desiccant wheel, Heat and mass transfer.
+________________
+
+
+
+
+Lista de ilustrações
+Figura 1.1 - Exemplos de overfit, underfit, e o modelo ideal Fonte: AWS (2025)        6
+
+
+
+
+________________
+
+
+
+
+
+
+Lista de símbolos
+
+
+Yi                Fração mássica de água presente na corrente de ar
+Ti                Temperatura
+Tr                Temperatura de Regeneração
+φD                Umidade relativa
+RPM                Rotações por Minuto
+MAE                Mean Absolute Error
+MSE                Mean Square Error
+𝑚                Número de dados de treino 
+𝑥i                Vetor característico de um dado
+𝑋                Matriz característica de todos os dados
+ℎ                Valor predito pelo modelo
+𝑦                Valor alvo
+𝑅2                Coeficiente de determinação
+𝑆𝑄res                Soma do quadrado dos resíduos
+𝑆𝑄𝑡𝑜𝑡                Soma total dos quadrados
+𝑦𝑖                Valor observado
+𝑦̂𝑖                 Valor previsto para 𝑦𝑖
+𝑦̅                Média das observações
+________________
+
+
+
+
+Sumário
+1 Introdução        1
+1.1 Transferência de calor e massa        1
+1.2 Justificativa:        1
+1.3 Aprendizado de máquina        2
+1.3.1 Função de aptidão (fitness)        4
+1.3.2 Overfit e underfit        5
+1.4 Objetivos        6
+1.5 Organização do texto        6
+2 Referencial teórico        9
+2.1 Roda dessecante        9
+2.2 Aprendizado de máquina        10
+3 Metodologia        11
+3.1 Obtenção e preparação da base de dados        11
+3.2 Implementação do modelo de regressão simbólica        11
+3.3 Seleção e validação dos modelos        12
+3.4 Etapas de análise e interpretação        12
+4 Resultados        14
+4.1 Resultados esperados        14
+4.2 Resultados parciais        14
+5 Cronograma de execução        16
+.
+
+
+
+
+________________
+
+
+
+
+1. Introdução
+   1. Transferência de calor e massa
+Os fenômenos de transferência de calor e massa estão presentes em grande parte dos processos térmicos e energéticos da engenharia, sendo fundamentais para o entendimento e o desenvolvimento de tecnologias voltadas à eficiência energética e ao controle de condições ambientais. De forma geral, a transferência de calor ocorre por convecção, condução e radiação, enquanto a transferência de massa se dá pela movimentação de espécies químicas, geralmente impulsionada por gradientes de concentração. Em muitos sistemas, esses dois fenômenos ocorrem de maneira simultânea e interdependente, exigindo uma abordagem acoplada para sua modelagem e análise.
+No caso de sistemas com materiais porosos ou processos envolvendo mudanças de fase, como ocorre em rodas dessecantes, o acoplamento entre calor e massa torna-se ainda mais evidente. Nesses dispositivos, o ar interage com um meio sólido impregnado de material adsorvente, resultando em trocas simultâneas de energia térmica e umidade. A transferência de calor ocorre tanto pela convecção entre o ar e a superfície do dessecante quanto pelo calor liberado ou absorvido durante o processo de adsorção, enquanto a transferência de massa é regida pelos gradientes de concentração do vapor d’água entre o ar e o material.
+A compreensão desses mecanismos combinados é essencial para a previsão do comportamento térmico e de umidade em aplicações práticas, especialmente em sistemas de climatização, recuperação de energia e processos industriais. O estudo conjunto da transferência de calor e massa permite o desenvolvimento de modelos mais representativos, capazes de descrever o desempenho de dispositivos como a roda dessecante de forma mais precisa e eficiente, contribuindo para o aprimoramento das tecnologias baseadas em trocas térmicas e de umidade.
+   2. Justificativa:
+Atualmente, o estudo da transferência de calor e massa em rodas dessecantes é realizado, em grande parte, com base em modelos analíticos e correlações empíricas desenvolvidas a partir de simplificações teóricas. Esses modelos, embora amplamente utilizados, apresentam limitações importantes, especialmente quando aplicados a condições de operação distintas daquelas consideradas durante seu desenvolvimento. Termos fundamentais, como a isoterma de adsorção e a vazão volumétrica de transferência de calor por unidade de volume devido à adsorção, são frequentemente calculados com base em correlações aproximadas, o que pode introduzir erros significativos na modelagem do comportamento físico real do sistema.
+Além disso, o processo de elaboração, teste e validação dessas correlações demanda grande esforço computacional e experimental, exigindo simplificações que nem sempre capturam adequadamente as interações complexas entre variáveis como temperatura, umidade relativa e vazão do ar. Ainda que as simulações por Dinâmica dos Fluidos Computacional (CFD) ofereçam resultados mais detalhados, elas apresentam alto custo de processamento e requerem conhecimento especializado, o que limita sua aplicação em análises rápidas e comparativas.
+Nesse contexto, a aplicação de técnicas de aprendizagem de máquina, em especial a regressão simbólica, surge como uma alternativa promissora para a modelagem do fenômeno de transferência de calor em rodas dessecantes, pois permite identificar, a partir de dados experimentais, expressões matemáticas explícitas que descrevem as relações entre variáveis de processo sem necessidade de assumir previamente um formato funcional específico.
+A principal motivação deste trabalho, portanto, é desenvolver e comparar diferentes modelos computacionais baseados em regressão simbólica, com o objetivo de obter correlações analíticas que representem com maior precisão o comportamento térmico e de adsorção da roda dessecante, possibilitando prever a eficiência do processo sob diversas condições de operação, otimizar o desempenho do equipamento e oferecer uma alternativa mais ágil e precisa em relação às abordagens tradicionais, validando o potencial do uso de técnicas de aprendizado de máquina na área de transferência de calor e massa.
+   3. Aprendizado de máquina
+Uma definição formal do que seria aprendizado de máquina é dada por Tom Mitchell em seu livro Machine Learning ou Aprendizado de Máquina em português, de acordo com Mitchell, “um algoritmo, ou programa de computador é dito aprender a partir da experiência E, em relação a uma tarefa T e uma medida de desempenho P, se seu desempenho em T, medido por P, melhora com a experiência E” (Michel 1997). Essa definição introduz a ideia central de que sistemas de aprendizado de máquina não necessitam de regras explícitas pré-programadas, mas sim de dados, a partir dos quais “aprendem” a inferir relações e generalizar para novos casos. Tais modelos são treinados com base em um conjunto de dados, por meio do qual aprendem a executar tarefas preditivas ou classificatórias. O objetivo fundamental é a aquisição da capacidade de generalização, permitindo que o modelo produza resultados acurados para dados inéditos, ou seja, que não fizeram parte da sua fase de treinamento.
+Impulsionado justamente por essa capacidade de generalização (mencionada anteriormente), o aprendizado de máquina evoluiu exponencialmente nas últimas décadas, consolidando-se hoje como um dos pilares centrais da inteligência artificial (IA). Atualmente, suas aplicações são vastas e impactam diversas áreas, indo desde o reconhecimento de padrões até a complexa modelagem de fenômenos físicos.
+Embora sua aplicação moderna seja ampla, o conceito fundamental de uma máquina "aprender com a experiência" (a base da definição de Mitchell citada no primeiro parágrafo) não é recente. O termo machine learning foi cunhado por Arthur Samuel em 1959, em uma pesquisa seminal sobre um programa de computador que jogava damas e era capaz de, autonomamente, aprimorar seu desempenho (P) na tarefa (T) conforme acumulava experiência (E) de jogo.
+O grande benefício desse mecanismo em relação à abordagem tradicional é que enquanto em uma abordagem tradicional de programação as regras do problema precisam ser descritas manualmente, o aprendizado de máquina inverte essa lógica: o sistema é alimentado com exemplos (dados de entrada e saída esperada), e o algoritmo identifica autonomamente os padrões que regem o comportamento do sistema. Essa capacidade faz com que o aprendizado de máquina seja especialmente útil em áreas da engenharia em que os fenômenos físicos são altamente não lineares ou de difícil modelagem analítica, como é o caso de processos de transferência de calor e massa em sistemas complexos, como as rodas dessecantes.
+O avanço do poder computacional e a disponibilidade de grandes volumes de dados a partir dos anos 2000 permitiram a consolidação do aprendizado de máquina em aplicações práticas, tanto industriais quanto científicas. Atualmente, há uma ampla gama de algoritmos com diferentes abordagens e finalidades, como árvores de decisão, florestas aleatórias, redes neurais artificiais, máquinas de vetor de suporte (SVM) e modelos evolutivos. Cada técnica possui características específicas em termos de interpretabilidade, robustez e custo computacional, devendo ser escolhida conforme os objetivos do estudo e o tipo de dado disponível.
+Entre essas técnicas, destaca-se a regressão simbólica, que será abordada neste estudo. Diferentemente de outros algoritmos que produzem modelos cuja lógica interna é inacessível, a regressão simbólica busca identificar expressões matemáticas explícitas que descrevem a relação entre variáveis, combinando precisão preditiva com interpretabilidade física. Essa característica é especialmente valiosa em contextos científicos e de engenharia, pois permite obter correlações empíricas de forma automática, facilitando a análise e a comparação com modelos teóricos ou experimentais já existentes. Em outras palavras, a regressão simbólica oferece um meio de descobrir equações diretamente a partir dos dados, tornando-se uma ferramenta promissora para o desenvolvimento de novas correlações em problemas de transferência de calor e massa em rodas dessecantes.
+      1. Função de aptidão (fitness)
+A parte principal do processo é a função de aptidão (fitness). O trabalho dela é medir o quanto cada expressão matemática (fórmula) criada se encaixa nos dados reais que temos.Para fazer essa medição, geralmente usamos três métricas conhecidas:
+1. Erro Absoluto Médio (MAE):
+
+(1.1)
+Onde:
+X : matriz características dos dados                                                             m : número de amostras                                                                     xi : vetor característico de um dado                                                                                                                                                                         yi : valor alvo                                                                                                                                                                         h : valor predito pelo modelo            
+2. Erro Quadrático Médio (MSE): Essa métrica calcula a média dos erros, mas penaliza muito mais erros grandes.
+
+(1.2)
+3. Coeficiente de Determinação (R²): 
+
+(1.3)
+Com base nessas métricas, o processo se inicia aplicando a função de aptidão a um grupo inicial de fórmulas, que foram criadas aleatoriamente misturando operadores (como +, −, ×, ÷), variáveis e números. A partir dessa avaliação, as expressões mais bem adaptadas (aquelas com o menor MAE e MSE ou maior R², por exemplo) são selecionadas para gerar a próxima "geração". Esse novo grupo é criado combinando partes das fórmulas existentes por meio de operadores genéticos, como o crossover (que troca segmentos entre duas expressões) e a mutação (que introduz alterações aleatórias). Esse ciclo evolutivo de avaliar, selecionar e recombinar é repetido ao longo de várias gerações, permitindo que o modelo encontre gradualmente uma equação que descreva o comportamento dos dados com alta precisão.
+      2. Overfit e underfit
+Em aprendizado de máquina, os conceitos de underfitting e overfitting descrevem problemas relacionados à capacidade de generalização dos modelos. O underfitting ocorre quando o modelo é muito simples para representar a complexidade dos dados, resultando em baixo desempenho tanto nos dados de treinamento quanto nos de teste, pois ele não consegue capturar os padrões relevantes do fenômeno estudado.
+Já o overfitting acontece quando o modelo é excessivamente complexo, ajustando-se não apenas aos padrões reais dos dados, mas também ao ruído e às variações aleatórias presentes no conjunto de treinamento. Nessa situação, o modelo apresenta alta precisão no treinamento, mas baixo desempenho em novos dados, indicando que ele não será capaz de gerar resultados genéricos. O equilíbrio entre esses dois extremos é essencial para garantir a validade preditiva do modelo, sendo alcançado por meio de técnicas como validação cruzada, regularização, ajuste de hiperparâmetros e pela escolha adequada da complexidade do algoritmo.
+  Figura 1.1 - Exemplos de overfit, underfit, e o modelo ideal Fonte: AWS (2025)
+   4. Objetivos
+O objetivo principal desta pesquisa é desenvolver um modelo de aprendizado de máquina para buscar correlações matemáticas explícitas entre variáveis de processo, permitindo assim o desenvolvimento de modelos que representam o fenômeno físico de transferência de calor e massa, sem necessidade de assumir previamente uma relação funcional específica. Podem ser listados os seguintes objetivos específicos:
+* Implementar diferentes modelos de regressão simbólica para gerar correlações empíricas a partir de dados experimentais ou simulados do sistema estudado.
+* Comparar o desempenho dos modelos obtidos com correlações clássicas da literatura, analisando a precisão e capacidade de generalização.
+* Validar os resultados por meio de métricas estatísticas e análise gráfica dos erros preditivos.
+   1. Organização do texto
+Este documento foi organizado em capítulos abordando os seguintes tópicos:
+* Capítulo 1: apresentação de introdução e motivação do estudo. Neste capítulo também são detalhados os objetivos do projeto de pesquisa.
+* Capítulo 2: apresentação de diretrizes para elaboração do texto, incluindo dicas sobre modos de escrita e abordagens a serem evitadas.
+* Capítulo 3: descrição de metodologia para realização do estudo proposto, incluindo a descrição do aparato e procedimento experimental, bem como procedimento experimental e de regressão de dados.
+* Capítulo 4: apresentação e discussão dos resultados, incluindo comparação com estudos similares, e comparação com métodos preditivos disponíveis na literatura aberta.
+* Conclusões: sumarização das principais conclusões deste estudo, e apresentação de propostas para trabalhos futuros.
+________________
+
+
+
+
+2. Referencial teórico
+Este capítulo apresenta a fundamentação teórica que embasa esse trabalho, o referencial inicia-se com os princípios de transferência de calor e, subsequentemente, aborda os conceitos de aprendizado de máquina.
+   2. Roda dessecante
+As rodas dessecantes ativas são dispositivos com vasta utilização na atividade industrial. Sua versatilidade permite diferentes aplicações, dada sua capacidade de controle de umidade de ambientes. Para além disso, se acopladas a ciclos de resfriamento, possibilitam uma grande economia de energia, variando entre 25 até 50% da aplicação (Gaurav Singh, 2023). Uma vez que estes dispositivos capturam a massa de água presente na corrente de ar pelo fenômeno físico da adsorção, a sua aplicação em ciclos de resfriamento, se comparada aos ciclos tradicionais por compressão mecânica a vapor, trazem significativas vantagens do ponto de vista de eficiência energética, já que não é necessário aporte de grandes quantidades de energia necessária para remoção da carga latente durante o estágio do ciclo correspondente à condensação.
+Na modelagem física do problema envolvendo a roda dessecante e em sua conseguinte descrição matemática, contudo, existem termos que são calculados de forma aproximada por correlações numéricas utilizando-se de simplificações teóricas para o problema físico. Como exemplo, pode-se citar a isoterma de adsorção. Em termos matemáticos, ela representa a curva que descreve a relação entre a quantidade de substância adsorvida na superfície do material dessecante e a concentração desse material na fase fluida – isto é, em se tratando de utilização de rodas dessecantes para desumidificação de correntes de ar, é a razão entre massa de água adsorvida na matriz porosa e a concentração (fração mássica) de água na fase gasosa, mantida constante a temperatura. 
+Para além da isoterma de adsorção, outro termo calculado de diferentes formas de acordo com as simplificações teóricas utilizadas é a vazão volumétrica de transferência de calor por unidade de volume devido ao efeito (ou fenômeno físico) de adsorção. Matematicamente costuma ser representada como . Também dependente da fase adsorvida que é calculada segundo a isoterma, previamente citada, a vazão volumétrica de transferência de calor por adsorção admite simplificações teóricas a depender do modelo. (SPHAIER, 2005)
+   3. Aprendizado de máquina
+Segundo Brunton (2022), os algoritmos de aprendizado de máquina têm ganhado relevância no campo das ciências aplicadas, sobretudo em problemas de sistemas dinâmicos, onde há forte interdependência entre variáveis físicas e comportamentos não lineares. O autor destaca o potencial dessas ferramentas para o desenvolvimento de modelos interpretáveis, que diferem das aplicações puramente comerciais da inteligência artificial, oferecendo soluções analíticas para problemas científicos complexos. Entre as técnicas discutidas, destacam-se aquelas que produzem expressões analíticas como resultado, como a programação genética e o Sparse Identification of Nonlinear Dynamical Systems (SINDy), ambos diretamente relacionados à regressão simbólica, abordagem adotada neste estudo.
+Complementarmente, o trabalho de Sodré (2022) — “Aplicação de Algoritmos de Aprendizado de Máquina para Determinação de Correlações Empíricas em Modelos de Transferência de Calor e Massa” — constitui a principal base teórica desta pesquisa. O autor apresenta uma metodologia robusta para a utilização de algoritmos evolutivos na formulação de correlações empíricas a partir de dados experimentais. Sua proposta demonstra como a programação genética pode ser empregada como ferramenta de descoberta de equações, gerando correlações matemáticas capazes de representar fenômenos de transferência com precisão e interpretabilidade física.
+
+
+3. Metodologia
+A metodologia proposta neste trabalho tem como objetivo aplicar algoritmos de aprendizado de máquina, com foco em regressão simbólica, para a obtenção de correlações empíricas de transferência de calor e massa em um sistema de roda dessecante. O procedimento metodológico foi estruturado de modo a integrar a geração e o tratamento de dados, a implementação do modelo de aprendizado de máquina e a validação dos resultados obtidos, conforme descrito a seguir.
+   4. Obtenção e preparação da base de dados
+Antes da aplicação do algoritmo de aprendizado de máquina, foi realizada a organização e normalização dos dados, garantindo que todas as variáveis estivessem em escalas comparáveis. Também foram conduzidas etapas de análise exploratória e limpeza da base, com o objetivo de remover inconsistências e identificar padrões preliminares nas relações entre as variáveis.
+A base de dados utilizada neste estudo foi gerada por meio de simulações de Dinâmica dos Fluidos Computacional (CFD), realizadas para diferentes condições de operação da roda dessecante. As variáveis de entrada consideradas incluem parâmetros como temperatura e umidade relativa do ar nas entradas e saídas das seções de desumidificação e regeneração, além da rotação da roda (RPM). A partir desses dados, foram calculadas grandezas adimensionais relevantes, como os números de Nusselt, Reynolds e Prandtl, que servirão como base para a determinação das correlações empíricas.
+   5. Implementação do modelo de regressão simbólica
+A regressão simbólica foi implementada utilizando a linguagem Python, empregando bibliotecas voltadas a algoritmos evolutivos e manipulação simbólica, como gplearn, DEAP e SymPy. O objetivo desse modelo é identificar expressões matemáticas que representem, com boa precisão e interpretabilidade física, o comportamento das variáveis dependentes em função das variáveis independentes.
+O processo inicia com a geração de uma população inicial de expressões matemáticas aleatórias, formadas por combinações de operadores básicos (adição, subtração, multiplicação, divisão, potências) e variáveis de entrada. Em seguida, cada expressão é avaliada por meio de uma função de aptidão (fitness), definida a partir de métricas estatísticas como o erro quadrático médio (MSE) ou o coeficiente de determinação (R²), que medem o grau de ajuste entre o modelo e os dados obtidos via CFD.
+As expressões mais bem avaliadas são então selecionadas e recombinadas por operadores genéticos de crossover e mutação, gerando novas equações. O processo evolutivo se repete por diversas gerações, até a convergência dos resultados ou até que se atinja um critério de parada definido. Dessa forma, o algoritmo é capaz de “descobrir” correlações empíricas que descrevem o fenômeno físico analisado, sem a necessidade de assumir previamente uma forma funcional específica.
+   6. Seleção e validação dos modelos
+Após o treinamento, os modelos gerados foram classificados de acordo com sua precisão estatística, simplicidade matemática e coerência física, de modo a equilibrar desempenho preditivo e interpretabilidade. Para evitar overfitting, o conjunto de dados foi dividido em dados de treino e teste, e o desempenho de generalização dos modelos foi avaliado em dados não utilizados durante o processo de aprendizado.
+As correlações finais obtidas por regressão simbólica foram então comparadas com correlações empíricas tradicionais da literatura, utilizadas em estudos anteriores sobre transferência de calor e massa. Essa comparação teve como objetivo verificar a validade e o potencial de generalização dos modelos obtidos, bem como avaliar o ganho de precisão e eficiência do método baseado em aprendizado de máquina.
+   7. Etapas de análise e interpretação
+Por fim, as equações resultantes foram analisadas quanto à significância física dos termos identificados, buscando relacionar os padrões descobertos pelo algoritmo com os mecanismos fundamentais de transferência de calor e massa no sistema estudado. Essa etapa permitiu verificar se as expressões obtidas não apenas ajustam os dados numericamente, mas também mantêm coerência com o comportamento termodinâmico esperado para uma roda dessecante em operação.
+Dessa forma, a metodologia proposta combina fundamentos clássicos da engenharia térmica com técnicas modernas de aprendizado simbólico, viabilizando a geração automática de correlações empíricas precisas, interpretáveis e potencialmente generalizáveis para diferentes condições operacionais do sistema.
+
+
+
+
+
+
+4. Resultados
+Até o momento presente, já foi alcançado progresso significativo no desenvolvimento do projeto, especialmente na etapa de compreensão teórica e prática dos algoritmos de regressão simbólica. O estudo inicial concentrou-se na replicação do trabalho de Sodré (2022) — “Aplicação de Algoritmos de Aprendizado de Máquina para Determinação de Correlações Empíricas em Modelos de Transferência de Calor e Massa” — com o objetivo de compreender detalhadamente o funcionamento da metodologia proposta e validar sua aplicabilidade em novos contextos. Essa replicação permitiu o domínio das principais etapas de implementação do modelo, incluindo o pré-processamento dos dados, a configuração dos parâmetros do algoritmo e a interpretação física das expressões matemáticas geradas.
+Paralelamente, foi conduzido um estudo aprofundado sobre o funcionamento térmico e higroscópico de rodas dessecantes, com apoio de um aluno de doutorado do Programa de Pós-Graduação em Engenharia Mecânica (PGMEC/UFF). Esse acompanhamento técnico permitiu a consolidação do entendimento físico do sistema e a obtenção de uma base de dados completa, gerada a partir de simulações CFD (Computational Fluid Dynamics), contemplando variáveis como temperatura, fração mássica de vapor d’água, velocidade do ar e condições operacionais de regeneração. Essa base servirá de insumo para o desenvolvimento e o treinamento dos modelos de regressão simbólica.
+   8. Resultados esperados
+Os resultados esperados com a aplicação da metodologia incluem a geração automática de correlações empíricas que descrevem a transferência simultânea de calor e massa na roda dessecante, sem a necessidade de assumir previamente uma forma funcional específica. Espera-se que os modelos desenvolvidos apresentem alta precisão e coerência física, permitindo comparações diretas com as correlações tradicionais da literatura. Além disso, pretende-se avaliar a capacidade do uso da regressão simbólica como uma ferramenta eficiente de modelagem em engenharia térmica.
+   9. Resultados parciais
+Os resultados parciais indicam que o algoritmo implementado em Python é capaz de identificar padrões funcionais entre variáveis adimensionais, como os números de Nusselt, Reynolds e Prandtl.
+
+
+5. Cronograma de execução
+        Diante disso, é razoável considerar que o restante do projeto será desenvolvido ao longo de aproximadamente 5 meses, seguindo as etapas descritas a seguir:
+1. Definição do escopo e variáveis do estudo (Mês 1):
+Estudo mais aprofundado nas equações que regem o funcionamento de uma roda dessecante para a definição de quais correlações seriam as mais desejáveis de se obter com o aprendizado de máquina e montar um plano de ação claro para a implementação do modelo de regressão simbólica nesse sistema.
+2. Implementação do modelo de regressão simbólica (Mês 2 – Mês 3):
+Adaptação do código em Python e seleção de algumas possibilidades de operadores, parâmetros e configurações para a execução de diferentes experimentos com variações nesses operadores, parâmetros e configurações.
+3. Análise e interpretação dos resultados (Mês 3 – Mês 4):
+Aplicação de métricas estatísticas, como R² e RMSE para avaliar o desempenho dos modelos gerados frente às correlações empíricas tradicionais, e análise da coerência física das equações encontradas. Interpretação física das equações obtidas, discussão dos resultados, identificação de eventuais limitações e vantagens do modelo e proposição de possíveis melhorias ou aplicações futuras.
+
+4. Escrita do relatório final e preparação da apresentação (Mês 4 – Mês 5):
+Consolidação do documento final, incluindo a análise dos resultados obtidos em contraste com os esperados. Revisão e formatação do trabalho conforme as normas da instituição. Preparação do material visual para a apresentação do projeto.
+   6. REFERÊNCIAS BIBLIOGRÁFICAS
+SODRÉ, A. O. Aplicação de algoritmos de inteligência artificial para determinação de correlações empíricas em modelos de transferência de calor e massa. UFF, 2022
+SAMUEL, A. L. Some studies in machine learning using the game of checkers. IBM Journal of Research and Development, v. 3, n. 3, p. 210–229, 1959.
+BRUNTON, Steven L.; KUTZ, J. Nathan. Data-driven science and engineering: Machine learning, dynamical systems, and control. Cambridge University Press, 2022.
+MITCHELL, Tom M. Machine Learning. New York: McGraw-Hill, 1997.

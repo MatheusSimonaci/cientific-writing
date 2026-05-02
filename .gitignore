@@ -1,12 +1,10 @@
-# PDFs grandes (adicione manualmente se quiser versionar algum)
-*.pdf
+# Ignorar saídas de compilação
+TCC/output/
+*.docx
 
-# Sistema operacional
+# Manter o template se desejado (comente a linha abaixo para ignorar)
+!template-abnt.docx
+
+# Ignorar arquivos temporários
 .DS_Store
 Thumbs.db
-desktop.ini
-
-# Editores
-.vscode/
-*.swp
-*~

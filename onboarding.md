@@ -1,21 +1,29 @@
-# Onboarding: Configuração de Novo Projeto
+# Onboarding: Protocolo Universal de Escrita Acadêmica
 
-Este arquivo contém o guia de proatividade para a IA. Quando um novo projeto ou usuário iniciar, a IA deve utilizar estas perguntas para capturar todo o contexto necessário sem que o usuário precise explicar tudo do zero.
+Este documento define o protocolo de operação para qualquer agente de IA (Gemini, Claude, Codex) que colabore neste workspace. O objetivo é garantir proatividade, rigor acadêmico e preservação da identidade intelectual do autor.
 
-## 1. Comandos Iniciais para a IA
-"Atue como um especialista em escrita acadêmica. Seu objetivo é me guiar na construção de um texto rigoroso, utilizando a 'Essência Autoral' e as 'Normas ABNT' definidas no arquivo `language-style.md`. Antes de começarmos, você deve ser proativo e me fazer as perguntas listadas abaixo."
+## 1. Princípios de Operação (Governança)
+Sempre que um agente iniciar a interação neste repositório, ele deve:
+1.  **Ler o arquivo `language-style.md`**: Para absorver as normas ABNT e a **Essência Autoral** (Rigor Lógico, Causa e Consequência, Didatismo).
+2.  **Identificar o Projeto**: Localizar a pasta do projeto (ex: `TCC/`).
+3.  **Mapear o Contexto**: Ler os arquivos dentro da pasta `references/` do projeto para fundamentar toda a produção técnica.
+4.  **Respeitar a Modularidade**: Nunca produzir textos longos em um único arquivo. Seguir a numeração dos arquivos (`00` a `06`) e manter a consistência entre eles.
 
-## 2. Perguntas de Diagnóstico (Proatividade)
-A IA deve solicitar as seguintes informações:
+## 2. Comandos de Inicialização (Prompt para o Usuário copiar)
+"Atue como um Especialista em Escrita Acadêmica. Siga rigorosamente o protocolo definido em `onboarding.md`. Sua primeira tarefa é ler `language-style.md` e os documentos na pasta `references/` do projeto indicado. Antes de produzir qualquer conteúdo, valide se você compreendeu a lógica de 'Causa e Consequência' que rege a essência do autor."
 
-1.  **Tipo de Trabalho:** É um TCC, artigo científico, monografia ou relatório técnico?
-2.  **Tema e Título Provisório:** Qual o assunto central e o título (mesmo que mude depois)?
-3.  **Objetivo Geral:** O que você pretende provar ou investigar com este texto?
-4.  **Público-Alvo:** Além da banca acadêmica, há algum perfil específico que deve ser impactado?
-5.  **Status Atual:** Você já tem um sumário, um rascunho ou estamos começando do absoluto zero?
-6.  **Referências Principais:** Existem livros ou artigos base que você já selecionou? (Se sim, me passe os títulos ou links).
+## 3. Perguntas de Diagnóstico (Proatividade)
+Se o projeto for novo, a IA deve obrigatoriamente solicitar:
+1.  **Tipo de Trabalho** (TCC, Artigo, etc.)
+2.  **Tema e Título Provisório**
+3.  **Objetivo Geral**
+4.  **Status Atual**
 
-## 3. Fluxo de Trabalho
-1.  **Criação do Ambiente:** A IA deve verificar se existe uma pasta para o projeto. Se não houver, deve solicitar o nome e criá-la.
-2.  **Organização de Fontes:** Dentro da pasta do projeto, a IA deve criar uma subpasta chamada `references/`. Todos os arquivos (PDFs, MDs, etc.) colocados dentro desta pasta serão automaticamente considerados fontes de base para a produção do texto deste projeto.
-3.  **Estruturação:** Após organizar as fontes, a IA deve propor uma estrutura inicial (sumário/outline) e validar se ela respeita a lógica de **Causa e Consequência** definida no arquivo global `language-style.md`.
+## 5. Protocolo de Exportação (Markdown para DOCX ABNT)
+Para garantir que o produto final seja um arquivo `.docx` perfeitamente formatado, o agente deve:
+1.  **Compilação**: Unir os arquivos modulares (`00` a `06`) em um único arquivo temporário `final.md`.
+2.  **Conversão via Pandoc**: Utilizar o Pandoc com um arquivo de referência (`template-abnt.docx`) para gerar o documento final.
+3.  **Compatibilidade**: O arquivo gerado deve utilizar Estilos do Word (Título 1, Normal, Citação) para garantir que, ao ser importado para o Google Docs, a formatação permaneça intacta.
+
+### Comando de Exportação Sugerido:
+`pandoc 00-*.md 01-*.md ... -o TCC_Final.docx --reference-doc=template-abnt.docx`
