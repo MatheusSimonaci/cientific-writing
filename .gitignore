@@ -1,0 +1,12 @@
+# PDFs grandes (adicione manualmente se quiser versionar algum)
+*.pdf
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+*.swp
+*~
